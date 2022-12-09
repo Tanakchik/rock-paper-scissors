@@ -1,66 +1,62 @@
-function getComputerChoice(){
-    return 'Rock','Paper','Scissors'
+let userScore = 0;
+let compScore = 0;
+
+const playGame = () => {
+  const userChoice = window.prompt("Rock, paper or scissors?");
+  const compChoice = getComputerChoice();
+  const winner = getWinner(userChoice, compChoice);
+
+  window.alert(`You chose ${userChoice}. The computer chose ${compChoice}.`);
+
+  if (winner === "user") {
+    userScore++;
+    window.alert("You won!");
+  } else if (winner === "comp") {
+    compScore++;
+    window.alert("You lost!");
+  } else {
+    window.alert("It's a draw!");
+  }
+};
+
+const getComputerChoice = () => {
+  const randomNumber = Math.round(Math.random() * 2);
+  if (randomNumber === 0) {
+    return "rock";
+  } else if (randomNumber === 1) {
+    return "paper";
+  } else {
+    return "scissors";
+  }
+};
+
+const getWinner = (user, comp) => {
+  if (user === comp) {
+    return "draw";
+  } else if (user === "rock" && comp === "paper") {
+    return "comp";
+  } else if (user === "rock" && comp === "scissors") {
+    return "user";
+  } else if (user === "paper" && comp === "rock") {
+    return "user";
+  } else if (user === "paper" && comp === "scissors") {
+    return "comp";
+  } else if (user === "scissors" && comp === "rock") {
+    return "comp";
+  } else if (user === "scissors" && comp === "paper") {
+    return "user";
+  }
+};
+
+while (userScore < 5 && compScore < 5) {
+  playGame();
+  window.alert(
+    `The score is now You: ${userScore} and Computer: ${compScore}.`
+  );
 }
 
-//console.log(getComputerChoice)
-
-/*function playRound(playerSelection, computerSelection){
-    if (playerSelection === 'rock','RocK','ROCK')
-       (computerSelection === 'Paper')
-    {
-        console.log ("You Lose! Paper beats Rock");
-    
-    }  (playerSelection === 'scissors','Scissors','SCISSORS')
-       (computerSelection === 'Paper')
-    {
-        console.log ("You Lose! Paper beats scissors");
-    }
-    
+if (userScore === 5) {
+  window.alert("You won the game!");
+} else {
+  window.alert("You lost the game!");
 }
-/*const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));*/
-
-function game(){}
-let playerScore = 0;
-let computerScore= 0;
-let moves = 0;
-
-
-function playRound(){}
-
- playerSelection = prompt("Choose one: rock,paper,or scissors"); 
- computerSelection = getComputerChoice();
-
- console.log(playerSelection)
- console.log(computerSelection)
-
- for (let i = 0; i < 5; i++) {
-    playRound();
- 
- }
- if (playerSelection === computerSelection);{
-
-     alert ("Tie");
- }
- 
- if  (playerSelection === 'rock','RocK','ROCK');{
-      (computerSelection === 'Paper');
-
-     alert ("You Lose! Paper beats Rock");
-
-} if (playerSelection === 'scissors','Scissors','SCISSORS');
-     (computerSelection === 'Paper');
-{
-     alert ("You Lose! Paper beats scissors");
-}
-if   (playerSelection === 'paper');
-     (computerSelection === 'Rock');
-{
-     alert ("You Win! Paper beats Computer");
-}
-if   (playerSelection === 'paper');{
-     (computerSelection === 'Scissors');
-}
-     alert ("You Win! Paper beats Computer");
-
